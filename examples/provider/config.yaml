@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: default
+  name: example-provider-secret
+type: Opaque
+data:
+  # credentials: BASE64ENCODED_PROVIDER_CREDS
+---
+apiVersion: dummy.crossplane.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: example
+spec:
+  endpoint: https://jsonplaceholder.dummy.com/
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: example-provider-secret
+      key: credentials

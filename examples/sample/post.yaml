@@ -1,0 +1,13 @@
+apiVersion: jsonplaceholder.dummy.crossplane.io/v1alpha1
+kind: Post
+metadata:
+  name: dummy-post
+spec:
+  forProvider:
+    title: "My First Post"
+    body: |
+      Hello, World!
+      This is my first post.
+      I hope you like it.
+  providerConfigRef:
+    name: example
